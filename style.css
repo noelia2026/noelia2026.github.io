@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Fascinate+Inline&family=Nunito:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --aqua-light: #dffcff;
+    --aqua: #8de8ef;
+    --aqua-medium: #55cfdc;
+    --aqua-dark: #218fa5;
+    --blue: #167ba0;
+    --white: rgba(255, 255, 255, 0.78);
+    --text: #125a70;
+}
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    font-family: 'Nunito', sans-serif;
+    color: var(--text);
+
+    /* Base Frutiger Aqua */
+    background:
+        radial-gradient(circle at 15% 20%, rgba(255,255,255,.95) 0 3%, transparent 18%),
+        radial-gradient(circle at 85% 15%, rgba(255,255,255,.8) 0 2%, transparent 15%),
+        radial-gradient(circle at 75% 80%, rgba(255,255,255,.65) 0 4%, transparent 20%),
+        linear-gradient(145deg, #c9f8fb 0%, #8de1ea 38%, #4bbdcc 68%, #b9f5f5 100%);
+
+    position: relative;
+}
+
+/* Brillos decorativos */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    pointer-events: none;
+    border-radius: 50%;
+    filter: blur(1px);
+}
+
+body::before {
+    width: 280px;
+    height: 280px;
+    top: -100px;
+    left: -70px;
+    background: rgba(255, 255, 255, 0.28);
+    box-shadow:
+        420px 80px 0 -80px rgba(255,255,255,.22),
+        850px 500px 0 -40px rgba(255,255,255,.25);
+}
+
+body::after {
+    width: 180px;
+    height: 180px;
+    right: -50px;
+    bottom: -60px;
+    background: rgba(255,255,255,.25);
+}
+
+/* Contenedor principal tipo Linktree */
+.main-content {
+    width: min(92%, 540px);
+    min-height: 90vh;
+    padding: 55px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* Título */
+.title {
+    text-align: center;
+    margin-bottom: 42px;
+}
+
+.title h1 {
+    font-family: 'Fascinate Inline', cursive;
+    font-size: clamp(3rem, 10vw, 5.5rem);
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: .95;
+    color: #ffffff;
+    text-shadow:
+        0 2px 0 rgba(33, 143, 165, .25),
+        0 6px 18px rgba(25, 125, 150, .25);
+}
+
+.title p {
+    margin-top: 14px;
+    font-size: .92rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #19758a;
+}
+
+/* Navegación */
+.navigation {
+    width: 100%;
+}
+
+.navigation ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+    width: 100%;
+}
+
+.item-list {
+    width: 100%;
+}
+
+/* Botones */
+.item-list a {
+    min-height: 68px;
+    width: 100%;
+    padding: 17px 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    overflow: hidden;
+
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: .9rem;
+    font-weight: 700;
+    color: #146b80;
+
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,.82),
+        rgba(219,250,252,.52)
+    );
+
+    border: 1px solid rgba(255,255,255,.9);
+    border-radius: 22px;
+
+    box-shadow:
+        0 10px 25px rgba(23, 117, 137, .18),
+        inset 0 2px 3px rgba(255,255,255,.95),
+        inset 0 -3px 8px rgba(40, 164, 180, .08);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    transition:
+        transform .35s cubic-bezier(.2,.8,.2,1),
+        box-shadow .35s ease,
+        color .35s ease;
+}
+
+/* Brillo que atraviesa el botón */
+.item-list a::before {
+    content: "";
+    position: absolute;
+    width: 80px;
+    height: 180%;
+    left: -120px;
+    top: -40%;
+    transform: rotate(25deg);
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.8),
+        transparent
+    );
+
+    transition: left .6s ease;
+}
+
+/* Pequeña burbuja */
+.item-list a::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    right: 24px;
+    top: 17px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.9);
+    box-shadow:
+        -8px 17px 0 -3px rgba(255,255,255,.65),
+        5px 30px 0 -4px rgba(255,255,255,.5);
+    opacity: .7;
+    transition: transform .35s ease;
+}
+
+/* Interacción */
+.item-list a:hover {
+    color: #ffffff;
+    transform: translateY(-6px) scale(1.025);
+
+    background: linear-gradient(
+        135deg,
+        rgba(61, 190, 207, .9),
+        rgba(107, 220, 226, .78)
+    );
+
+    box-shadow:
+        0 16px 30px rgba(20, 111, 132, .27),
+        inset 0 2px 5px rgba(255,255,255,.75),
+        0 0 25px rgba(145, 244, 247, .5);
+}
+
+.item-list a:hover::before {
+    left: 115%;
+}
+
+.item-list a:hover::after {
+    transform: translate(-5px, 5px) scale(1.15);
+}
+
+.item-list a:active {
+    transform: translateY(-1px) scale(.98);
+    box-shadow:
+        0 5px 12px rgba(20, 111, 132, .2),
+        inset 0 3px 8px rgba(20, 111, 132, .15);
+}
+
+/* Accesibilidad: teclado */
+.item-list a:focus-visible {
+    outline: 3px solid rgba(255,255,255,.95);
+    outline-offset: 4px;
+}
+
+/* Ajuste para celulares */
+@media (max-width: 600px) {
+    .main-content {
+        width: min(92%, 430px);
+        min-height: 100vh;
+        padding: 35px 20px;
+    }
+
+    .title {
+        margin-bottom: 34px;
+    }
+
+    .title h1 {
+        font-size: clamp(3rem, 16vw, 4.5rem);
+    }
+
+    .title p {
+        font-size: .75rem;
+        letter-spacing: 1.4px;
+    }
+
+    .item-list a {
+        min-height: 62px;
+        border-radius: 19px;
+    }
+}
+
+/* Reduce animaciones si el usuario las tiene desactivadas */
+@media (prefers-reduced-motion: reduce) {
+    .item-list a,
+    .item-list a::before,
+    .item-list a::after {
+        transition: none;
+    }
+}
